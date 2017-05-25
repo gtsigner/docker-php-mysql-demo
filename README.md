@@ -1,20 +1,16 @@
-##docker-compose的lnmp环境编排实战
-
-##来自快递到家开源项目的lnmp环境
-
+## docker-compose的lnmp环境编排实战
 环境： Redis3.1+PHP5.6-fpm+Nginx+Mysql5.7
 
-##Copyright@   Godtoy
+## Author@Godtoy
 
-##Usage
+## Usage
 1.git clone .
+
+> 在确保docker和docker-compose都安装了得情况下构建服务
 
 2.docker-compose up --build
 
-##第一次需要手动导入测试数据
-
-
-
+## 第一次需要手动导入测试数据
 1.查看docker-compose 网络
 
 ```
@@ -42,6 +38,6 @@ $ docker run -it --link mysql-db:mysql --network 30goinghome_default -v /c/Users
 
 
 
-##开发
+## 开发
 
 项目入口文件放到app/webroot/Public/下
