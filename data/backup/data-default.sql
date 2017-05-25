@@ -20,6 +20,7 @@ CREATE TABLE `data` (
   `num` varchar(50) DEFAULT NULL COMMENT '输入3',
   `year` varchar(50) DEFAULT NULL COMMENT '输入4',
   `note` varchar(255) DEFAULT NULL COMMENT '内容',
+  `create_time` INT(10) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -48,5 +49,5 @@ CREATE TABLE `user` (
 #
 
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ykw','123456'),(2,'','');
+INSERT INTO `user` VALUES (1,'admin','admin!@3');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;

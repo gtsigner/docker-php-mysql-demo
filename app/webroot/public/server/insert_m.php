@@ -33,6 +33,7 @@ $ret = $db->insert("data", array(
     'num' => $num,
     'year' => $year,
     'note' => $note,
+    'create_time' => time(),
 ));
 
 ajaxReturn(200, "提交数据成功", null);

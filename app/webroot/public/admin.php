@@ -4,7 +4,7 @@ require "./../conf/config.php";
 require "./../lib/function.php";
 require "./../vendor/autoload.php";
 if (!checkAdminLogin()) {
-    header("Location:./login.html");
+    header("Location:./login.php");
     exit();
 }
 
@@ -15,11 +15,12 @@ $db = new \Medoo\Medoo(array(
     'username' => DB_USER,
     'password' => DB_PASSWORD
 ));
-
-$data_list = $db->select("data", "*", array());
+$data_list = $db->select("data", "*", [
+    "ORDER" => [
+        'create_time' => 'DESC'
+    ],
+]);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,15 +34,7 @@ $data_list = $db->select("data", "*", array());
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="css/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="css/green.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -67,7 +60,7 @@ $data_list = $db->select("data", "*", array());
                         <th class="column-title">输入3</th>
                         <th class="column-title">输入4</th>
                         <th class="column-title">内容</th>
-
+                        <th class="column-title">新增时间</th>
                     </tr>
                     </thead>
 
@@ -89,6 +82,7 @@ $data_list = $db->select("data", "*", array());
                             <td class=" "><?php echo $row['num'] ?></td>
                             <td class=" "><?php echo $row['year'] ?></td>
                             <td class=" "><?php echo $row['note'] ?></td>
+                            <td class=" "><?php echo date("Y-m-d H:i:s", $row['create_time']); ?></td>
                             </td>
                         </tr>
                         <?php
